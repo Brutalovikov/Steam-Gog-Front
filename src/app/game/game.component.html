@@ -1,0 +1,25 @@
+<p class="head">game works!</p>
+<button (click)="clickLog()">click</button>
+
+<table mat-table [dataSource]="games$ | async" class="mat-elevation-z8">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let game"> {{game.name}} </td>
+  </ng-container>
+  <ng-container matColumnDef="priceDollar">
+    <th mat-header-cell *matHeaderCellDef> Price $ </th>
+    <td mat-cell *matCellDef="let game"> {{game.priceDollar}} </td>
+  </ng-container>
+  <ng-container matColumnDef="priceRub">
+    <th mat-header-cell *matHeaderCellDef> Price P </th>
+    <td mat-cell *matCellDef="let game"> {{game.priceRub}} </td>
+  </ng-container>
+  <ng-container matColumnDef="priceEuro">
+    <th mat-header-cell *matHeaderCellDef> Price Э </th>
+    <td mat-cell *matCellDef="let game"> {{game.priceEuro}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+  <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+</table>
