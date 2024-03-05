@@ -13,12 +13,25 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { GameComponent } from './game/game.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SteamAchievementsComponent } from './steam-achievements/steam-achievements.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SteamGamesComponent } from './steam-games/steam-games.component';
+import { MinutesToHoursPipe } from './shared/pipes/m2h.pipe';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatCardModule } from '@angular/material/card';
+import { MatSortModule } from '@angular/material/sort';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
     AchievementComponent,
-    GameComponent
+    GameComponent,
+    SteamAchievementsComponent,
+    SteamGamesComponent,
+    MinutesToHoursPipe
   ],
   imports: [
     BrowserModule,
@@ -27,9 +40,17 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatTableModule,
     MatSidenavModule,
     MatButtonModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatCardModule,
+    MatSortModule,
+    MatPaginatorModule,
+    MatProgressBarModule,
     BrowserAnimationsModule,
     //MatDrawerHarness,
-    RouterModule
+    RouterModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

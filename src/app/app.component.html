@@ -334,7 +334,7 @@
 
 
 
-<nav>
+<!-- <nav>
   <mat-drawer-container class="example-container" autosize>
     <mat-drawer #drawer class="example-sidenav" mode="side">
       <a class="button"
@@ -348,13 +348,10 @@
       <a routerLink="/achievements" href="/achievements">achievements</a>
       <br>
       <a routerLink="/game" href="/game">games</a>
-      <!--<p>Auto-resizing sidenav</p>
-      @if (showFiller) {
-        <p>Lorem, ipsum dolor sit amet consectetur.</p>
-      }
-      <button (click)="showFiller = !showFiller" mat-raised-button>
-        Toggle extra text
-      </button>-->
+      <br>
+      <a routerLink="/steam" href="/steam">steam</a>
+      <br>
+      <a routerLink="/steam-games" href="/steam">st games</a>
     </mat-drawer>
   
     <div class="example-sidenav-content">
@@ -364,5 +361,25 @@
     </div>
   
   </mat-drawer-container>
-</nav>
-<router-outlet />
+</nav> -->
+
+<mat-sidenav-container class="example-container">
+  <mat-sidenav mode="side" opened>
+    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
+      <div class="container">
+          <a class="navbar-brand">Steam Gog</a>
+          <ul class="nav navbar-nav" routerLinkActive="active">
+              <li class="nav-item"><a class="nav-link" routerLink="/achievements" href="/achievements">Achievements</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/game" href="/game">Games</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/steam" href="/steam">Steam</a></li>
+              <li class="nav-item"><a class="nav-link" routerLink="/steam-games" href="/steam">Steam games</a></li>
+          </ul>
+      </div>
+    </nav>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet />
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+
