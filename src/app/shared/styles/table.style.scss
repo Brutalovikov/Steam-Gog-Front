@@ -1,0 +1,33 @@
+th {
+  color: black;
+  font-weight: bold;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 18px;
+}
+
+td {
+  color: rgb(45, 11, 11);
+}
+
+table {
+  padding: 20px;
+  padding-bottom: 0px;
+}
+
+app-steam-games {
+  padding-bottom: 30px;
+}
+
+mat-sidenav-content {
+  padding-bottom: 30px;
+}
+
+tfoot {
+  display: 1; 
+  bottom: 20px; 
+  z-index: 10;
+}
+
+.tableCard {
+  background-color: #eeeeee;
+}

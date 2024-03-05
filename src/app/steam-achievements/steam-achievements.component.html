@@ -1,0 +1,43 @@
+
+<mat-card>
+  <mat-card-content>
+    <form [formGroup]="achievementForm" (ngSubmit)="getAchievements()" class="example-form">
+
+      <mat-form-field class="example-full-width">
+        <mat-label>User ID:</mat-label>
+        <input id="userId" type="text" formControlName="userId" required matInput>
+      </mat-form-field> 
+      <mat-form-field class="example-full-width">
+        <mat-label>Game ID:</mat-label>
+        <input id="gameId" type="text" formControlName="gameId" required matInput>
+      </mat-form-field> 
+      <div *ngIf="achievementForm.controls.userId.errors?.['required']">userId is required.</div>
+      <div *ngIf="achievementForm.controls.gameId.errors?.['required']">gameId is required.</div>
+    
+      <br>
+      <button type="submit" [disabled]="!achievementForm.valid" mat-raised-button>Отправить</button>
+    
+    </form>
+  </mat-card-content>
+</mat-card>
+<br>
+<mat-card class="tableCard">
+  <mat-card-content>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef> Name </th>
+        <td mat-cell *matCellDef="let achievement"> {{achievement.name}} </td>
+      </ng-container>
+      <ng-container matColumnDef="achieved">
+        <th mat-header-cell *matHeaderCellDef> Achieved </th>
+        <td mat-cell *matCellDef="let achievement"> {{!!achievement.achieved}} </td>
+      </ng-container>
+    
+      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
+      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>
+<div class="footerT"></div>
+

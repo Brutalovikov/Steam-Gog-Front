@@ -8,6 +8,8 @@ import { AchievementService } from './achievement.service';
 })
 export class AchievementComponent {
   achievements$ = this.achievementService.getAchievements();
+  columnsToDisplay = ['name', 'game', 'description', 'achieved'];
+
   constructor(
     private achievementService: AchievementService,
   ) {} 
