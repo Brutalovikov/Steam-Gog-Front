@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Observable } from 'rxjs/internal/Observable';
 import { MatTableDataSource } from '@angular/material/table';
@@ -16,7 +16,7 @@ export class SteamAchievementsComponent {
   ) {} 
 
   //achievements$ = this.steamService.getAchievements();
-  columnsToDisplay = ['name', 'achieved'];
+  //columnsToDisplay = ['name', 'achieved'];
   dataSource: any;
 
   achievementForm = new FormGroup({

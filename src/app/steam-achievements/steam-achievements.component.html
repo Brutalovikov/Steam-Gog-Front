@@ -21,23 +21,8 @@
   </mat-card-content>
 </mat-card>
 <br>
-<mat-card class="tableCard">
-  <mat-card-content>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+<ng-container *ngIf="dataSource">
+  <achievements-table [data]="dataSource"></achievements-table>
+</ng-container>
 
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let achievement"> {{achievement.name}} </td>
-      </ng-container>
-      <ng-container matColumnDef="achieved">
-        <th mat-header-cell *matHeaderCellDef> Achieved </th>
-        <td mat-cell *matCellDef="let achievement"> {{!!achievement.achieved}} </td>
-      </ng-container>
-    
-      <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
-      <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
-    </table>
-  </mat-card-content>
-</mat-card>
-<div class="footerT"></div>
 

@@ -23,6 +23,8 @@ import { MatCardModule } from '@angular/material/card';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { SteamGameComponent } from './steam-game/steam-game.component';
+import { AchievementsTableComponent } from './shared/components/achievements-table/achievements-table.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
     GameComponent,
     SteamAchievementsComponent,
     SteamGamesComponent,
-    MinutesToHoursPipe
+    MinutesToHoursPipe,
+    SteamGameComponent,
+    AchievementsTableComponent
   ],
   imports: [
     BrowserModule,
