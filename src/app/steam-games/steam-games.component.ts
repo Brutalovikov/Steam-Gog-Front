@@ -21,15 +21,17 @@ export class SteamGamesComponent {
   columnsToDisplay = ['name', 'progress', 'playtime_forever'];
   dataSource = new MatTableDataSource<Game>();
   gameCount: number;
+  userId: string;
 
   gameForm = new FormGroup({
     userId: new FormControl('76561198280250790', {nonNullable: true, validators: Validators.required})
   });
 
   getGames() {
-    const userId = this.gameForm.controls.userId.value;
+    this.userId = this.gameForm.controls.userId.value;
+    //console.log(this.userId);
     
-    this.steamService.getGames(userId).subscribe(data=>{
+    this.steamService.getGames(this.userId).subscribe(data=>{
       this.dataSource.data = data.games
       this.dataSource.sort = this.sort
       this.dataSource.paginator = this.paginator;
@@ -45,6 +47,7 @@ export class SteamGamesComponent {
 }
 
 export interface Game {
+  appid: number,
   name: string,
   playtime_forever: number
 }

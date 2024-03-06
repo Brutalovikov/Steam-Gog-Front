@@ -1,0 +1,4 @@
+<ng-container *ngIf="achievements$ | async as achievements">
+  <p>{{gameId}}</p>
+  <achievements-table [data]="achievements"></achievements-table>
+</ng-container>
