@@ -332,54 +332,54 @@
 <!-- * * * * * * * * * * End of Placeholder  * * * * * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
+<mat-drawer-container autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <mat-sidenav-container class="example-container">
+      <mat-sidenav mode="side" opened>
+        <mat-nav-list>
+          <p class="title">Steam Gog</p>
+          <a mat-list-item routerLink="/achievements" href="/achievements">Achievements</a>
+          <a mat-list-item routerLink="/game" href="/game">Games</a>
+          <a mat-list-item routerLink="/steam" href="/steam">Steam</a>
+          <a mat-list-item routerLink="/steam-games" href="/steam">Steam games</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </mat-drawer>
 
-
-<!-- <nav>
-  <mat-drawer-container class="example-container" autosize>
-    <mat-drawer #drawer class="example-sidenav" mode="side">
-      <a class="button"
-         routerLink="/"
-        href="/"
-        routerLinkActive="activebutton"
-        ariaCurrentWhenActive="page">
-        Home
-      </a>
-      <br>
-      <a routerLink="/achievements" href="/achievements">achievements</a>
-      <br>
-      <a routerLink="/game" href="/game">games</a>
-      <br>
-      <a routerLink="/steam" href="/steam">steam</a>
-      <br>
-      <a routerLink="/steam-games" href="/steam">st games</a>
-    </mat-drawer>
-  
-    <div class="example-sidenav-content">
-      <button type="button" mat-button (click)="drawer.toggle()">
-        Меню
+  <div class="example-sidenav-content">
+    <mat-toolbar>
+      <button type="button" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="drawer.toggle()">
+        <mat-icon>menu</mat-icon>
       </button>
-    </div>
-  
-  </mat-drawer-container>
-</nav> -->
+      <span>Steam Gog</span>
+      <span class="example-spacer"></span>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+        <mat-icon>share</mat-icon>
+      </button>
+    </mat-toolbar>
+  </div>
+  <router-outlet />
+</mat-drawer-container>
 
-<mat-sidenav-container class="example-container">
-  <mat-sidenav mode="side" opened>
-    <nav class="navbar navbar-fixed-top navbar-dark bg-inverse">
-      <div class="container">
-          <a class="navbar-brand">Steam Gog</a>
-          <ul class="nav navbar-nav" routerLinkActive="active">
-              <li class="nav-item"><a class="nav-link" routerLink="/achievements" href="/achievements">Achievements</a></li>
-              <li class="nav-item"><a class="nav-link" routerLink="/game" href="/game">Games</a></li>
-              <li class="nav-item"><a class="nav-link" routerLink="/steam" href="/steam">Steam</a></li>
-              <li class="nav-item"><a class="nav-link" routerLink="/steam-games" href="/steam">Steam games</a></li>
-          </ul>
-      </div>
-    </nav>
-  </mat-sidenav>
-  <mat-sidenav-content>
+<!-- <mat-drawer-container class="example-container" autosize>
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+    <p>Auto-resizing sidenav</p>
+  </mat-drawer>
+
+  <div class="example-sidenav-content">
+    <button type="button" mat-button (click)="drawer.toggle()">
+      Toggle sidenav
+    </button>
     <router-outlet />
-  </mat-sidenav-content>
-</mat-sidenav-container>
+  </div>
+
+</mat-drawer-container> -->
 
 

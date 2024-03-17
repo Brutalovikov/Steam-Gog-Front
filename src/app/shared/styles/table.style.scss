@@ -12,6 +12,7 @@ td {
 table {
   padding: 20px;
   padding-bottom: 0px;
+  border-radius: 5px;
 }
 
 app-steam-games {
@@ -30,4 +31,7 @@ tfoot {
 
 .tableCard {
   background-color: #eeeeee;
+  margin-left: 8px;
+  margin-right: 16px;
+  //width: auto;
 }

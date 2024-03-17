@@ -25,6 +25,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { SteamGameComponent } from './steam-game/steam-game.component';
 import { AchievementsTableComponent } from './shared/components/achievements-table/achievements-table.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatListModule } from '@angular/material/list';
+import {MatToolbarHarness} from '@angular/material/toolbar/testing';
 
 @NgModule({
   declarations: [
@@ -43,6 +48,7 @@ import { AchievementsTableComponent } from './shared/components/achievements-tab
     HttpClientModule,
     MatTableModule,
     MatSidenavModule,
+    MatListModule,
     MatButtonModule,
     MatFormFieldModule,
     MatInputModule,
@@ -50,6 +56,9 @@ import { AchievementsTableComponent } from './shared/components/achievements-tab
     MatSortModule,
     MatPaginatorModule,
     MatProgressBarModule,
+    MatToolbarModule,
+    MatIconModule,
+    MatMenuModule,
     BrowserAnimationsModule,
     //MatDrawerHarness,
     RouterModule,

@@ -1,4 +1,28 @@
+<mat-card class="gameCard">
+  <mat-card-content>
+    <mat-card class="example-card" *ngIf="gameInfo$ | async as info">
+      <mat-card-header>
+        <div mat-card-avatar class="example-header-image">
+          <img mat-card-image [src]="info.capsule_imagev5" alt="RUDEV">
+        </div>
+        <mat-card-title>{{info.name}}</mat-card-title>
+        <mat-card-subtitle *ngIf="info.price_overview?.final_formatted">{{info.price_overview.final_formatted}}</mat-card-subtitle>
+      </mat-card-header><br>
+      <img mat-card-image [src]="info.header_image" alt="RUDEV">
+      <mat-card-content>
+        <p>
+          {{info.short_description}}
+        </p>
+      </mat-card-content>
+      <!-- <mat-card-actions>
+        <button mat-button>LIKE</button>
+        <button mat-button>SHARE</button>
+      </mat-card-actions> -->
+    </mat-card>
+  </mat-card-content> 
+</mat-card>
+
+<br>
 <ng-container *ngIf="achievements$ | async as achievements">
-  <p>{{gameId}}</p>
   <achievements-table [data]="achievements"></achievements-table>
 </ng-container>
