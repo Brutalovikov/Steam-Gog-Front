@@ -17,4 +17,8 @@ export class SteamGogService {
   getGames(userId: string): Observable<any> {
     return this.http.get(`${this.url}/games/${userId}`);
   }
+
+  getGameInfoForGamePage(gameId: string): Observable<any> {
+    return this.http.get(`${this.url}/info/${gameId}`);
+  }
 }

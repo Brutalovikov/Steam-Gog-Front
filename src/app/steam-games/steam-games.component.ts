@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SteamGogService } from '../shared/providers/steamGog.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
@@ -10,7 +10,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './steam-games.component.html',
   styleUrl: './steam-games.component.scss'
 })
-export class SteamGamesComponent {
+export class SteamGamesComponent implements OnInit{
   @ViewChild(MatSort) sort: MatSort;
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
@@ -26,6 +26,10 @@ export class SteamGamesComponent {
   gameForm = new FormGroup({
     userId: new FormControl('76561198280250790', {nonNullable: true, validators: Validators.required})
   });
+
+  ngOnInit(): void {
+    //this.getGames();
+  }
 
   getGames() {
     this.userId = this.gameForm.controls.userId.value;
