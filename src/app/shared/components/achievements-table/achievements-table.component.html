@@ -18,6 +18,11 @@
         <td mat-cell *matCellDef="let achievement"> {{achievement.name}} </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
+      <ng-container matColumnDef="description">
+        <th mat-header-cell *matHeaderCellDef> Description </th>
+        <td mat-cell *matCellDef="let achievement"> {{achievement.description}} </td>
+        <td mat-footer-cell *matFooterCellDef></td>
+      </ng-container>
       <ng-container matColumnDef="achieved">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Achieved </th>
         <td mat-cell *matCellDef="let achievement"> 
