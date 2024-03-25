@@ -20,7 +20,7 @@ export class AchievementsTableComponent implements AfterViewInit {
     //console.log(this.data);  
   } 
 
-  columnsToDisplay = ['icon', 'name', 'achieved'];
+  columnsToDisplay = ['icon', 'name', 'description', 'achieved'];
 
   ngAfterViewInit(): void {
     this.dataSource.data = this.data
@@ -34,5 +34,6 @@ export class AchievementsTableComponent implements AfterViewInit {
 export interface Achievement {
   icon: string,
   name: string,
+  description: string,
   achieved: number
 }
