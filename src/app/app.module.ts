@@ -30,6 +30,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import {MatToolbarHarness} from '@angular/material/toolbar/testing';
+import { OAuthModule } from 'angular-oauth2-oidc';
 
 @NgModule({
   declarations: [
@@ -63,7 +64,8 @@ import {MatToolbarHarness} from '@angular/material/toolbar/testing';
     //MatDrawerHarness,
     RouterModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    OAuthModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

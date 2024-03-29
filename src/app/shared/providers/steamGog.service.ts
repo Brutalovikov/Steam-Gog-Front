@@ -5,6 +5,7 @@ import { Observable } from "rxjs";
 @Injectable({ providedIn: 'root' })
 export class SteamGogService {
   url = 'http://127.0.0.1:3000/steam';
+  url2 = 'http://127.0.0.1:3000/auth/steam/';
   constructor(
     private http: HttpClient,
   ) {} 
@@ -20,5 +21,9 @@ export class SteamGogService {
 
   getGameInfoForGamePage(gameId: string): Observable<any> {
     return this.http.get(`${this.url}/info/${gameId}`);
+  }
+
+  auth(): Observable<string> {
+    return this.http.get<string>(this.url2);
   }
 }
