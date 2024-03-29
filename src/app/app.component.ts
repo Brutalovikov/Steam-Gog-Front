@@ -20,7 +20,12 @@ export class AppComponent {
     // this.steamGog.auth().subscribe(newAddr => {
     //   console.log('new addr', newAddr)
     // })
-    this.steamGog.auth().subscribe();
-    //window.location.href = addr;
+    // this.steamGog.auth().subscribe(data => {
+    //   console.log('123', data.url)
+    // })
+
+    const data = await firstValueFrom(this.steamGog.auth());
+    console.log('---->', data.url)
+    window.location.href = data.url;
   }
 }
