@@ -1,6 +1,22 @@
 <p class="head">game works!</p>
 <button (click)="clickLog()">click</button>
 
+<!-- <script type="text/javascript">
+  const eventSource = new EventSource('/auth/sse');
+  eventSource.onmessage = ({ data }) => {
+    const message = document.createElement('li');
+    message.innerText = 'New message: ' + data;
+    document.body.appendChild(message);
+    console.log(message);
+  }
+</script> -->
+
+<!-- <ul>
+  <li *ngFor="let event of events">
+    {{ event.message }}
+  </li>
+</ul> -->
+
 <table mat-table [dataSource]="games$ | async" class="mat-elevation-z8">
 
   <ng-container matColumnDef="name">

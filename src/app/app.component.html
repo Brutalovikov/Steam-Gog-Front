@@ -1,12 +1,15 @@
+<div *ngIf="show">
+  
+</div>
 <mat-drawer-container autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <mat-sidenav-container class="example-container">
-      <mat-sidenav mode="side" opened>
+      <mat-sidenav #sidenav mode="side" opened>
         <mat-nav-list>
           <p class="title">Steam Gog</p>
-          <a mat-list-item routerLink="/achievements" href="/achievements">Achievements</a>
-          <a mat-list-item routerLink="/game" href="/game">Games</a>
-          <a mat-list-item routerLink="/steam" href="/steam">Steam</a>
+          <!-- <a mat-list-item routerLink="/achievements" href="/achievements">Achievements</a>
+          <a mat-list-item routerLink="/game" href="/game">Games</a> -->
+          <a mat-list-item routerLink="/steam" href="/steam">Game</a>
           <a mat-list-item routerLink="/steam-games" href="/steam">Steam games</a>
         </mat-nav-list>
       </mat-sidenav>
@@ -23,18 +26,46 @@
       </button>
       <span>Steam Gog</span>
       <span class="example-spacer"></span>
-      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" (click)="like()">
         <mat-icon>favorite</mat-icon>
       </button>
-      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="destroy()">
         <mat-icon>share</mat-icon>
       </button>
-      <img src="../assets/sits_small.png" alt="" (click)="login()">
+      <!-- <ng-container *ngIf="userID$ | async as user"> -->
+      <!-- </ng-container> -->
+      <!-- <div *ngIf="userId; then done else empty"></div>
+      <ng-template #done> -->
+        <div [hidden]="!userCheck">
+          <button mat-icon-button class="example-icon example-header-image" [matMenuTriggerFor]="menu" aria-label="Example icon-button with share icon">
+            <img mat-card-image [src]="avatar" alt="RUDEV">
+          </button>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()">
+              <mat-icon>logout</mat-icon>
+              <span>Выйти</span>
+            </button>
+          </mat-menu>
+          <span id="name">{{userName}}</span>
+          <!-- <span class="example-spacer" margin-bottom="10px"></span> -->
+        </div>  
+      <!-- </ng-template>  
+      <ng-template #empty> -->
+        <!-- <button mat-icon-button class="example-icon" src="../assets/sits_small.png" alt="" (click)="login()">
+          <mat-icon>login</mat-icon>
+        </button> -->
+        <img [hidden]="userCheck" *ngIf="show" src="../assets/sits_small.png" alt="" (click)="login()">
+      <!-- </ng-template> -->
+      <!-- <img *ngIf="!!!userId; else done" src="../assets/sits_small.png" alt="" (click)="login()">
+      <ng-template #done>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon" (click)="logout()">
+          <mat-icon>home</mat-icon>
+        </button>
+      </ng-template>   -->
     </mat-toolbar>
   </div>
   <router-outlet />
 </mat-drawer-container>
-
 <!-- <mat-drawer-container class="example-container" autosize>
   <mat-drawer #drawer class="example-sidenav" mode="side">
     <p>Auto-resizing sidenav</p>

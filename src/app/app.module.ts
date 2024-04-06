@@ -31,6 +31,8 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import {MatToolbarHarness} from '@angular/material/toolbar/testing';
 import { OAuthModule } from 'angular-oauth2-oidc';
+import { LoginComponent } from './login/login.component';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     SteamGamesComponent,
     MinutesToHoursPipe,
     SteamGameComponent,
-    AchievementsTableComponent
+    AchievementsTableComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -49,6 +52,7 @@ import { OAuthModule } from 'angular-oauth2-oidc';
     HttpClientModule,
     MatTableModule,
     MatSidenavModule,
+    MatSelectModule,
     MatListModule,
     MatButtonModule,
     MatFormFieldModule,

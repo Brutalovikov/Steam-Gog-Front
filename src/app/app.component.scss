@@ -59,3 +59,16 @@ mat-drawer-container {
 .title {
   font-size: 22px;
 }
+
+.example-header-image img{
+  //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  width: 30px;
+  border-radius: 100%;
+  height: 30px;
+}
+
+#name {
+  // font-weight: bold;
+  margin-left: 5px;
+}
