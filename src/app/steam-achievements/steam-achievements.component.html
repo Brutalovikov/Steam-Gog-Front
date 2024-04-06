@@ -1,18 +1,40 @@
 
-<mat-card>
+<mat-card *ngIf="userId || userCheck">
   <mat-card-content>
     <form [formGroup]="achievementForm" (ngSubmit)="getAchievements()" class="example-form">
 
       <mat-form-field class="example-full-width">
         <mat-label>User ID:</mat-label>
-        <input id="userId" type="text" formControlName="userId" required matInput>
+        <input id="userId" type="text" formControlName="userId" [(ngModel)]="userId" required matInput>
+        @if (userId) {
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="userId=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
       </mat-form-field> 
       <mat-form-field class="example-full-width">
         <mat-label>Game ID:</mat-label>
-        <input id="gameId" type="text" formControlName="gameId" required matInput>
+        <input id="gameId" type="text" formControlName="gameId" [(ngModel)]="gameId" required matInput>
+        @if (gameId) {
+          <button matSuffix mat-icon-button aria-label="Clear" (click)="gameId=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        }
       </mat-form-field> 
-      <div *ngIf="achievementForm.controls.userId.errors?.['required']">userId is required.</div>
-      <div *ngIf="achievementForm.controls.gameId.errors?.['required']">gameId is required.</div>
+      <div *ngIf="achievementForm.controls.userId.errors?.['required']" class="req">userId is required.</div>
+      <div *ngIf="achievementForm.controls.gameId.errors?.['required']" class="req">game is required.</div>
+      <div class="select">
+        <h4>Write game ID or select a game from the list in your Steam profile library </h4>
+        <mat-form-field class="select">
+          <mat-label>Change game</mat-label>
+          <mat-select id="selectId" [(ngModel)]="selectedValue" name="game" (selectionChange)="onChange($event.value)">
+            @for (game of games; track game) {
+              <mat-option [value]="game.appid">{{game.name}}</mat-option>
+            }
+          </mat-select>
+        </mat-form-field>
+      </div>
+      
     
       <br>
       <button type="submit" [disabled]="!achievementForm.valid" mat-raised-button>Отправить</button>

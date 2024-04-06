@@ -1,9 +1,12 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { SteamGogService } from '../shared/providers/steamGog.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { Observable, tap } from 'rxjs';
+import { UserService } from '../shared/providers/user.service';
+import { Game } from '../shared/interfaces/game';
 
 @Component({
   selector: 'app-steam-games',
@@ -16,19 +19,34 @@ export class SteamGamesComponent implements OnInit{
 
   constructor(
     private steamService: SteamGogService,
+    private userService: UserService,
   ) {}
 
   columnsToDisplay = ['name', 'progress', 'playtime_forever'];
   dataSource = new MatTableDataSource<Game>();
   gameCount: number;
-  userId: string;
+  userId: string = this.userService.userId;
+  userCheck: boolean = false;
+  // userID$ = this.userService.userID$.pipe(
+  //   tap(userId => { 
+  //     console.log("11123"),
+  //     this.gameForm.controls.userId.setValue(userId);
+  //   })
+  // );
 
   gameForm = new FormGroup({
-    userId: new FormControl('76561198280250790', {nonNullable: true, validators: Validators.required})
+    userId: new FormControl(this.userId, {nonNullable: true, validators: Validators.required})
   });
 
   ngOnInit(): void {
-    //this.getGames();
+    if(this.userId) {
+      this.getGames();
+      this.userCheck = true;
+    }   
+  }
+
+  ngOnDestroy() {
+    //this.userID$.
   }
 
   getGames() {
@@ -40,7 +58,7 @@ export class SteamGamesComponent implements OnInit{
       this.dataSource.sort = this.sort
       this.dataSource.paginator = this.paginator;
       this.gameCount = data.game_count
-      //console.log(this.dataSource.data);
+      console.log(this.dataSource.data);
     });
     this.gameCount = this.dataSource.data.length;
   }
@@ -48,10 +66,4 @@ export class SteamGamesComponent implements OnInit{
   getTotalPlayTime() {
     return this.dataSource.data.reduce((acc, value: Game) => acc + value.playtime_forever, 0);
   }
-}
-
-export interface Game {
-  appid: number,
-  name: string,
-  playtime_forever: number
 }
