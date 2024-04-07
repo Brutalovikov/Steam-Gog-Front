@@ -1,3 +1,32 @@
-.example-card {
-  max-width: 400px;
+// .example-card {
+//   max-width: 400px;
+// }
+
+body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  margin: 0;
+  padding: 30px;
+  
+}
+
+html, body {
+  height: 100%;
+}
+
+.mat-typography {
+  color: black;
+  width: 560px;
+  border: radius 100px;
+}
+
+p {
+  font-size: 14px;
+}
+
+.actions {
+  margin-right: 10px;
+}
+
+h3 {
+  color:rgb(59, 9, 9);
 }

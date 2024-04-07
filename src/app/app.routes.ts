@@ -3,6 +3,7 @@ import { AchievementComponent } from './achievement/achievement.component';
 import { GameComponent } from './game/game.component';
 import { SteamAchievementsComponent } from './steam-achievements/steam-achievements.component';
 import { SteamGamesComponent } from './steam-games/steam-games.component';
+import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
   {
@@ -20,5 +21,9 @@ export const routes: Routes = [
   {
     path: 'steam-games',
     component: SteamGamesComponent,
+  },
+  {
+    path: 'login',
+    component: LoginComponent,
   }
 ];

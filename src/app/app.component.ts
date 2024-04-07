@@ -3,6 +3,8 @@ import { Observable, combineLatest, firstValueFrom, interval, map, tap } from 'r
 import { UserService } from './shared/providers/user.service';
 import { Router } from '@angular/router';
 import { MatDrawer, MatSidenav } from '@angular/material/sidenav';
+import { LoginComponent } from './login/login.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-root',
@@ -34,13 +36,9 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(
     private userService: UserService,
     private router: Router, 
-    private cdr: ChangeDetectorRef
-  ) {
-    if (!this.userId) {
-      //location.replace('http://127.0.0.1:4200/steam'); // clears browser history so they can't navigate with back button
-      //this.router.navigate(['PublicPage']);
-  }
-  }
+    private cdr: ChangeDetectorRef,
+    public dialog: MatDialog
+  ) {}
 
   ngOnInit(): void {
 
@@ -52,6 +50,11 @@ export class AppComponent implements OnInit, AfterViewInit {
         } 
         if(this.userId == null) {
           this.show = true;
+        }
+        if (!this.userCheck) {
+          //location.replace('http://localhost:4200/login'); // clears browser history so they can't navigate with back button
+          this.openDialog();
+          //this.router.navigate(['PublicPage']);
         }
       }
     );
@@ -67,6 +70,14 @@ export class AppComponent implements OnInit, AfterViewInit {
     );
     console.log("init", this.userCheck, this.show)
     console.log(this.userName, this.avatar);
+  }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(LoginComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
   }
 
   like() {
