@@ -33,6 +33,7 @@ import {MatToolbarHarness} from '@angular/material/toolbar/testing';
 import { OAuthModule } from 'angular-oauth2-oidc';
 import { LoginComponent } from './login/login.component';
 import { MatSelectModule } from '@angular/material/select';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -70,6 +71,7 @@ import { MatSelectModule } from '@angular/material/select';
     FormsModule,
     ReactiveFormsModule,
     OAuthModule,
+    MatDialogModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -40,7 +40,7 @@ export class SteamGamesComponent implements OnInit{
 
   ngOnInit(): void {
     if(this.userId) {
-      this.getGames();
+      //this.getGames();
       this.userCheck = true;
     }   
   }
