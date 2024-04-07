@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewInit, Component, Input, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Input, ViewChild } from '@angular/core';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 
@@ -16,9 +16,7 @@ export class AchievementsTableComponent implements AfterViewInit {
   achievementNotCompleted: number;
   totalAchievement: number;
 
-  constructor() {
-    //console.log(this.data);  
-  } 
+  constructor() {} 
 
   columnsToDisplay = ['icon', 'name', 'description', 'achieved'];
 

@@ -1,7 +1,7 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
-import { Observable, Subject } from "rxjs";
+import { Observable } from "rxjs";
 
 @Injectable({ providedIn: 'root' })
 export class SteamGogService {
@@ -14,15 +14,17 @@ export class SteamGogService {
     private router: Router,
   ) {} 
 
+  //Достать все ачивменты для таблицы
   getAchievements(userId: string, gameId: string): Observable<any> {
-    //console.log("onInit camelCase");
     return this.http.get(`${this.url}/game/${gameId}/achievements/${userId}`);
   }
 
+  //Достать все игры для таблицы
   getGames(userId: string): Observable<any> {
     return this.http.get(`${this.url}/games/${userId}`);
   }
 
+  //Достать всю инфу по игре для карточки
   getGameInfoForGamePage(gameId: string): Observable<any> {
     return this.http.get(`${this.url}/info/${gameId}`);
   }

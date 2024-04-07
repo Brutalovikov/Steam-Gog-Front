@@ -1,5 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
+//Пайп для преобразования времени в игре, которое изначально передается в секундах из СТима
 @Pipe({
   name: 'm2h'
 })

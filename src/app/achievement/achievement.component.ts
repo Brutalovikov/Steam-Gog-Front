@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AchievementService } from './achievement.service';
 
 @Component({
@@ -13,11 +13,6 @@ export class AchievementComponent {
   constructor(
     private achievementService: AchievementService,
   ) {} 
-
-    // ngOnInit(): void {
-    //   console.log("onInit camelCase");
-    //   this.achievementService.getAchievements();
-    // }
 
   clickLog() {
     this.achievements$.subscribe(data=>console.log(data));

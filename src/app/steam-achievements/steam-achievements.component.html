@@ -24,9 +24,9 @@
       <div *ngIf="achievementForm.controls.userId.errors?.['required']" class="req">userId is required.</div>
       <div *ngIf="achievementForm.controls.gameId.errors?.['required']" class="req">game is required.</div>
       <div class="select">
-        <h4>Write game ID or select a game from the list in your Steam profile library </h4>
+        <!-- <h4>Write game ID or select a game from the list in your Steam profile library </h4> --><br>
         <mat-form-field class="select">
-          <mat-label>Change game</mat-label>
+          <mat-label>Write game ID or select a game from the list</mat-label>
           <mat-select id="selectId" [(ngModel)]="selectedValue" name="game" (selectionChange)="onChange($event.value)">
             @for (game of games; track game) {
               <mat-option [value]="game.appid">{{game.name}}</mat-option>
@@ -37,7 +37,7 @@
       
     
       <br>
-      <button type="submit" [disabled]="!achievementForm.valid" mat-raised-button>Отправить</button>
+      <button type="submit" [disabled]="!achievementForm.valid" mat-raised-button>Send</button>
     
     </form>
   </mat-card-content>
