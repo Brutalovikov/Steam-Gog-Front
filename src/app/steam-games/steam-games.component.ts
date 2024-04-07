@@ -1,10 +1,9 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { SteamGogService } from '../shared/providers/steamGog.service';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { Observable, tap } from 'rxjs';
 import { UserService } from '../shared/providers/user.service';
 import { Game } from '../shared/interfaces/game';
 
@@ -23,16 +22,10 @@ export class SteamGamesComponent implements OnInit{
   ) {}
 
   columnsToDisplay = ['name', 'progress', 'playtime_forever'];
-  dataSource = new MatTableDataSource<Game>();
-  gameCount: number;
+  dataSource = new MatTableDataSource<Game>(); //Для заполнения таблы с игрушками
+  gameCount: number; //кол-во игр
   userId: string = this.userService.userId;
-  userCheck: boolean = false;
-  // userID$ = this.userService.userID$.pipe(
-  //   tap(userId => { 
-  //     console.log("11123"),
-  //     this.gameForm.controls.userId.setValue(userId);
-  //   })
-  // );
+  userCheck: boolean = false; //нужен для корректного отображения некоторых элементов (чисто по наличию айди нельзя)
 
   gameForm = new FormGroup({
     userId: new FormControl(this.userId, {nonNullable: true, validators: Validators.required})
@@ -45,13 +38,10 @@ export class SteamGamesComponent implements OnInit{
     }   
   }
 
-  ngOnDestroy() {
-    //this.userID$.
-  }
+  ngOnDestroy() {}
 
   getGames() {
     this.userId = this.gameForm.controls.userId.value;
-    //console.log(this.userId);
     
     this.steamService.getGames(this.userId).subscribe(data=>{
       this.dataSource.data = data.games
@@ -63,6 +53,7 @@ export class SteamGamesComponent implements OnInit{
     this.gameCount = this.dataSource.data.length;
   }
 
+  //Вызывается в таблице
   getTotalPlayTime() {
     return this.dataSource.data.reduce((acc, value: Game) => acc + value.playtime_forever, 0);
   }

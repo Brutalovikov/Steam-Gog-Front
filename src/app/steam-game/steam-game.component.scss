@@ -1,22 +1,12 @@
 .example-card {
   max-width: 400px;
-  //padding: 5px;
 }
-
-// .example-card > *, mat-card-content > *{
-//   font-family: "Century Gothic";
-// }
 
 .example-card {
   font-family: "Century Gothic";
 }
 
-// ::ng-deep #text1, #text2 {
-//   font-family: "Century Gothic";
-// }
-
 .example-header-image img{
-  //background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
   background-size: cover;
   width: 50px;
   border-radius: 100%;

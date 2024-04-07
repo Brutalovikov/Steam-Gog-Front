@@ -9,6 +9,7 @@ import { Observable, tap } from 'rxjs';
   styleUrl: './steam-game.component.scss'
 })
 export class SteamGameComponent {
+  //Этот компонент для отображения данных по игре в карточке
   route: ActivatedRoute = inject(ActivatedRoute);
   gameId: string;
   userId: string;
@@ -26,7 +27,6 @@ export class SteamGameComponent {
     this.achievements$ = this.steamService.getAchievements(this.userId, this.gameId).pipe(
       tap(achievements => console.log(achievements)),
     );
-    //this.steamService.getAchievements("", this.gameId.toString());
   }
 
 

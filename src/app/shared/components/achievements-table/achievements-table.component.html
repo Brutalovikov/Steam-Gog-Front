@@ -1,7 +1,6 @@
 <mat-card class="tableCard">
   <mat-card-content>
     <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" *ngIf="data.length > 0; else text" matSort>
-    <!-- <table mat-table [dataSource]="data" class="mat-elevation-z8"> -->
 
       <ng-container matColumnDef="icon">
         <th mat-header-cell *matHeaderCellDef> Icon </th>
@@ -9,7 +8,6 @@
           <div mat-card-avatar class="example-header-image">
             <img mat-card-image [src]="achievement.icon" alt="RUDEV">
           </div>
-          <!-- {{achievement.icon}}  -->
         </td>
         <td mat-footer-cell *matFooterCellDef></td>
       </ng-container>
@@ -26,7 +24,6 @@
       <ng-container matColumnDef="achieved">
         <th mat-header-cell *matHeaderCellDef mat-sort-header> Achieved </th>
         <td mat-cell *matCellDef="let achievement"> 
-          <!-- {{!!achievement.achieved}}  -->
           <div *ngIf="!!achievement.achieved; then done else empty"></div>
             <ng-template #done>
               <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="done">done</mat-icon>
@@ -41,11 +38,7 @@
       <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
       <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>
       <tr mat-footer-row *matFooterRowDef="columnsToDisplay; sticky: true"></tr>
-      <!-- <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" [attr.colspan]="columnsToDisplay.length">
-          No data matching the filter.
-        </td>
-      </tr> -->
+
     </table>
   </mat-card-content>
 </mat-card>

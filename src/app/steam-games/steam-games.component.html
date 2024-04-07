@@ -15,9 +15,9 @@
         <div *ngIf="gameForm.controls.userId.errors?.['required']" class="req">userId is required.</div>
       
         <br>
-        <button type="submit" [disabled]="!gameForm.valid" mat-raised-button>Отправить</button>
+        <button type="submit" [disabled]="!gameForm.valid" mat-raised-button>Send</button>
       
-        <div *ngIf="gameCount" class="gameCount">Количество игр: {{gameCount}}</div>
+        <div *ngIf="gameCount" class="gameCount">Game count: {{gameCount}}</div>
       </form>
     </mat-card-content>
   </mat-card>
@@ -34,7 +34,6 @@
               <ng-template #stName><a [routerLink]="['/user', userId, 'steam-game', game.appid]">{{game.name}}</a></ng-template>
           </td>
           <td mat-footer-cell *matFooterCellDef><b>Total</b></td>
-          <!-- <td mat-footer-cell *matFooterCellDef> Total </td> -->
         </ng-container>
         <ng-container matColumnDef="progress">
           <th mat-header-cell *matHeaderCellDef> Progress </th>
@@ -48,13 +47,6 @@
           <td mat-cell *matCellDef="let game"> {{game.playtime_forever | m2h}} </td>
           <td mat-footer-cell *matFooterCellDef><b>{{getTotalPlayTime() | m2h}}</b></td>
         </ng-container>
-      
-        <!-- <ng-container matColumnDef="disclaimer">
-          <td mat-footer-cell matFooterCellDef colspan="2">
-            Please note that the cost of items displayed are completely and totally made up.
-          </td>
-        </ng-container>
-        <tr mat-footer-rowmatFooterRowDef="['disclaimer']" class="example-second-footer-row"></tr> -->
       
         <tr mat-header-row *matHeaderRowDef="columnsToDisplay"></tr>
         <tr mat-row *matRowDef="let myRowData; columns: columnsToDisplay"></tr>

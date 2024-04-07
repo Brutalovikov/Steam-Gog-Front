@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { GameService } from './game.service';
 
 @Component({
@@ -13,14 +13,6 @@ export class GameComponent {
   constructor(
     private gameService: GameService,
   ) {} 
-
-  // eventSource$: any = new EventSource('/auth/sse');
-  // eventSource$.onmessage = ({ data }) => {
-  //   const message = document.createElement('li');
-  //   message.innerText = 'New message: ' + data;
-  //   document.body.appendChild(message);
-  //   console.log(message);
-  // }
 
   clickLog() {
     this.games$.subscribe(data=>console.log(data));

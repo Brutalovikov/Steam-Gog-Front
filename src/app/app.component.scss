@@ -37,11 +37,16 @@ mat-sidenav-content {
 
 mat-sidenav {
   padding: 15px;
+  background: rgb(239, 238, 238);
 }
 
 //СТИЛЬ ДЛЯ ТУЛБАРА
 .example-spacer {
   flex: 1 1 auto;
+}
+
+.example-sidenav-content {
+  background: rgb(239, 238, 238);
 }
 
 //СТИЛЬ ДЛЯ ОСНОВНОГО КОНТЕНТА
@@ -50,10 +55,6 @@ mat-drawer-container {
   top:0;
   width: 100%;
   bottom: 0;
-  // margin-top: -8px;
-  // margin-bottom: -8px;
-  // margin-left: -8px;
-  // margin-right: -8px;
 }
 
 .title {
@@ -69,6 +70,5 @@ mat-drawer-container {
 }
 
 #name {
-  // font-weight: bold;
   margin-left: 5px;
 }

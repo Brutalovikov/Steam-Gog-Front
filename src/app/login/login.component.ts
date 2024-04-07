@@ -1,7 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialogModule } from '@angular/material/dialog';
-import { CanActivate, CanActivateFn } from '@angular/router';
-import { AppComponent } from '../app.component';
 import { firstValueFrom } from 'rxjs';
 import { UserService } from '../shared/providers/user.service';
 
