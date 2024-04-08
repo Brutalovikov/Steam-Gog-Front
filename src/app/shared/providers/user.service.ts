@@ -63,7 +63,6 @@ export class UserService {
 
   //Для прерывания поток ссе
   ngOnDestroy() {
-    console.log("destroy");
     this.eventSource.close();
   }
 

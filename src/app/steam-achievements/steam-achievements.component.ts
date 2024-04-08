@@ -1,8 +1,8 @@
-import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { SteamGogService } from '../shared/providers/steamGog.service';
 import { UserService } from '../shared/providers/user.service';
-import { Game } from '../shared/interfaces/game';
+import { Game } from '../shared/interfaces/game.interface';
 
 @Component({
   selector: 'app-steam-achievements',

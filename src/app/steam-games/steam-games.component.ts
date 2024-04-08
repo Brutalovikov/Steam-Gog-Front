@@ -5,7 +5,7 @@ import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
 import { UserService } from '../shared/providers/user.service';
-import { Game } from '../shared/interfaces/game';
+import { Game } from '../shared/interfaces/game.interface';
 
 @Component({
   selector: 'app-steam-games',
@@ -33,7 +33,7 @@ export class SteamGamesComponent implements OnInit{
 
   ngOnInit(): void {
     if(this.userId) {
-      //this.getGames();
+      this.getGames();
       this.userCheck = true;
     }   
   }
@@ -48,7 +48,6 @@ export class SteamGamesComponent implements OnInit{
       this.dataSource.sort = this.sort
       this.dataSource.paginator = this.paginator;
       this.gameCount = data.game_count
-      console.log(this.dataSource.data);
     });
     this.gameCount = this.dataSource.data.length;
   }
