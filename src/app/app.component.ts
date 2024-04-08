@@ -1,10 +1,10 @@
-import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { Observable, firstValueFrom, tap } from 'rxjs';
 import { UserService } from './shared/providers/user.service';
-import { Router } from '@angular/router';
 import { MatDrawer } from '@angular/material/sidenav';
 import { LoginComponent } from './login/login.component';
 import { MatDialog } from '@angular/material/dialog';
+import { ConfigService } from './shared/providers/configuration.service';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,7 @@ import { MatDialog } from '@angular/material/dialog';
 export class AppComponent implements OnInit, AfterViewInit {
   @ViewChild('drawer') sidenav: MatDrawer;
   title = 'rudev-frontend';
-  //showFiller = false;
+  frontURL: string;
 
   //Данные авторизованного пользователя
   userId: string = this.userService.userId;
@@ -39,8 +39,13 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   constructor(
     private userService: UserService,
-    public dialog: MatDialog
-  ) {}
+    public dialog: MatDialog,
+    private configService: ConfigService
+  ) {
+    this.configService.loadConfig().then(() => {
+      this.frontURL = this.configService.getConfig().frontendURL;
+    });
+  }
 
   ngOnInit(): void {
 
@@ -81,9 +86,7 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   //Не задействованная кнопка
-  like() {
-    console.log("like")
-  }
+  like() {}
 
   ngAfterViewInit(): void {
     this.sidenav.open()  
@@ -102,6 +105,6 @@ export class AppComponent implements OnInit, AfterViewInit {
   async logout() {
     this.userCheck = true;
     await firstValueFrom(this.userService.logout());
-    window.location.replace('http://localhost:4200');
+    window.location.replace(this.frontURL);
   }
 }
