@@ -1,10 +1,11 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable, Subject, map, tap } from "rxjs";
+import { ConfigService } from "./configuration.service";
 
 @Injectable({ providedIn: 'root' })
 export class UserService {
-  authUrl = 'http://127.0.0.1:3000/auth/steam';
+  backURL: string;
   private eventSource: EventSource;
   private events: Subject<any> = new Subject(); //отображение данных по ссе
   data: any; //данные по ссе
@@ -19,7 +20,6 @@ export class UserService {
   userID$: Observable<string> = this.getEvents().pipe(
     map(user => user.userId),
     tap(userId => {
-      console.log(userId); 
       this.userId2.next(userId);
       this.userId = userId;
     })
@@ -27,23 +27,25 @@ export class UserService {
   userNAME$: Observable<string> = this.getEvents().pipe(
     map(user => user.userName),
     tap(userName => {
-      console.log(userName); 
       this.userName = userName;
     })
   );
   AVATAR$: Observable<string> = this.getEvents().pipe(
     map(user => user.avatar),
     tap(avatar => {
-      console.log(avatar); 
       this.avatar = avatar;
     })
   );
 
   constructor(
     private http: HttpClient,
+    private configService: ConfigService,
   ) {
+    this.configService.loadConfig().then(() => {
+      this.backURL = `${this.configService.getConfig().backendURL}/auth`;
+    });
     //Здесь принимаются месседжи от ССЕ
-    this.eventSource = new EventSource('http://127.0.0.1:3000/auth/sse');
+    this.eventSource = new EventSource(`http://127.0.0.1:3000/auth/sse`);
     this.eventSource.onmessage = (event) => {
       const data = JSON.parse(event.data);
       this.events.next(data);
@@ -52,18 +54,17 @@ export class UserService {
 
   //Получаем данные по юзеру
   auth(): Observable<any> {
-    return this.http.get(this.authUrl);
+    return this.http.get(`${this.backURL}/steam`);
   }
 
   //Обнуляем данные
   logout(): Observable<any> {
-    const req = this.http.get(`${this.authUrl}/logout`);
+    const req = this.http.get(`${this.backURL}/steam/logout`);
     return req;
   }
 
   //Для прерывания поток ссе
   ngOnDestroy() {
-    console.log("destroy");
     this.eventSource.close();
   }
 

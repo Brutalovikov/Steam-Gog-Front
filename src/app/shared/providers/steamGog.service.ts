@@ -1,31 +1,34 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { ConfigService } from "./configuration.service";
 
 @Injectable({ providedIn: 'root' })
 export class SteamGogService {
-  url = 'http://127.0.0.1:3000/steam';
-  authUrl = 'http://127.0.0.1:3000/auth/steam/';
+  backURL: string;
   data: any;
 
   constructor(
     private http: HttpClient,
-    private router: Router,
-  ) {} 
+    private configService: ConfigService,
+  ) {
+    this.configService.loadConfig().then(() => {
+      this.backURL = `${this.configService.getConfig().backendURL}/steam`;
+    });
+  } 
 
   //Достать все ачивменты для таблицы
   getAchievements(userId: string, gameId: string): Observable<any> {
-    return this.http.get(`${this.url}/game/${gameId}/achievements/${userId}`);
+    return this.http.get(`${this.backURL}/game/${gameId}/achievements/${userId}`);
   }
 
   //Достать все игры для таблицы
   getGames(userId: string): Observable<any> {
-    return this.http.get(`${this.url}/games/${userId}`);
+    return this.http.get(`${this.backURL}/games/${userId}`);
   }
 
   //Достать всю инфу по игре для карточки
   getGameInfoForGamePage(gameId: string): Observable<any> {
-    return this.http.get(`${this.url}/info/${gameId}`);
+    return this.http.get(`${this.backURL}/info/${gameId}`);
   }
 }
